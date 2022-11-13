@@ -83,6 +83,7 @@ def load_secrets(
         (home / ".kaggle/").mkdir(parents=True, exist_ok=True)        
         with open(home / ".kaggle/kaggle.json", "w") as fp:
             json.dump(credentials, fp)
+        os.chmod(home / ".kaggle/kaggle.json", 0o600)
 
 def wget(urls: Union[str, List[str]], silent=True):
     """
