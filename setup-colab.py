@@ -1,3 +1,5 @@
+### Many thanks to https://aseifert.com/p/secrets-management-colab/ for this
+
 import json
 import os
 from getpass import getpass
