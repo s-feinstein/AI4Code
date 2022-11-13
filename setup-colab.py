@@ -79,9 +79,10 @@ def load_secrets(
         home = Path.home()
         kaggle_user = secrets["kaggle_username"]
         kaggle_key = secrets["kaggle_secret_access_key"]
-        (home / ".kaggle/").mkdir(parents=True, exist_ok=True)
+        credentials = {"username": kaggle_user,"key": kaggle_key}
+        (home / ".kaggle/").mkdir(parents=True, exist_ok=True)        
         with open(home / ".kaggle/kaggle.json", "w") as fp:
-            fp.write(f"[default]\nusername = {kaggle_user}\nkey = {kaggle_key}\n")
+            json.dump(credentials, fp)
 
 def wget(urls: Union[str, List[str]], silent=True):
     """
